@@ -1,0 +1,58 @@
+body {
+    margin: 1em 2em;
+}
+
+h1,
+h3 {
+    color: #555;
+    margin: 0.3em;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+h3 {
+    padding-bottom: 0.8em;
+}
+
+svg {
+}
+
+body,
+text {
+    font-family: 'Avenir', sans-serif;
+}
+
+.tooltip {
+    position: fixed;
+    max-width: 200px;
+    padding: 0.5em 1em;
+    color: #fff;
+    background: #555;
+    border-radius: 2px;
+    box-shadow: 1px 1px 3px #bbb;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.tip-table {
+    border-collapse: collapse;
+}
+
+tr {
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.4);
+}
+
+tr:last-of-type {
+    border-bottom: none;
+}
+
+td:first-of-type {
+    padding: 0 0.5em;
+}
+
+td {
+    vertical-align: baseline;
+}
