@@ -1,5 +1,6 @@
 body {
   margin: 1em 2em;
+  // background: #1F033D;
 }
 
 h1,
@@ -66,14 +67,18 @@ text {
   font-weight: bold;
 }
 
+.treemap-container {
+  //background: lightgray;
+}
+
 .treemap-container svg {
   transform: rotate3d(1, 4, 1, 15deg);
 }
 
 rect {
-  stroke: red;
+  // stroke: red;
   fill: none;
-  stroke-width: 1.2px;
+  stroke-width: 2px;
 }
 
 
