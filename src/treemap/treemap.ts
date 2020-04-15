@@ -94,10 +94,8 @@ function update<T extends { value: any }>(res: T) {
 
 // Load data.
 export function loadTreemap() {
-
   d3.json('./data/data.json').then(res => {
     update(res);
-    console.log('Local json: ', res);
   });
 }
 
