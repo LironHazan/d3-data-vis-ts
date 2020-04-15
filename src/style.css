@@ -58,15 +58,6 @@ td {
 }
 
 
-
-
-#chart {
-  width: 800px;
-  /* height: 620px; */
-  margin: 0 auto;
-  padding-top: 30px;
-}
-
 text {
   pointer-events: none;
 }
@@ -75,31 +66,14 @@ text {
   font-weight: bold;
 }
 
+.treemap-container svg {
+  transform: rotate3d(1, 4, 1, 15deg);
+}
+
 rect {
-  stroke: #fff;
-  stroke-width: 1px;
+  stroke: red;
   fill: none;
+  stroke-width: 1.2px;
 }
 
-rect.parent,
-.grandparent rect {
-  stroke-width: 2px;
-}
 
-.children rect.parent,
-.grandparent rect {
-  cursor: pointer;
-}
-
-.children rect.child {
-  opacity: 0;
-}
-
-.children:hover rect.child {
-  opacity: 1;
-  stroke-width: 1px;
-}
-
-.children:hover rect.parent {
-  opacity: 0;
-}

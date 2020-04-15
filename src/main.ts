@@ -1,5 +1,4 @@
 import { loadBubble } from './circle-pack/bubbles';
-// @ts-ignore
 import { loadTreemap } from './treemap/treemap';
 
 const main = async () => {

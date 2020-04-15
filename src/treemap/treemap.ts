@@ -64,7 +64,9 @@ function update<T extends { value: any }>(res: T) {
     .data(nodes)
     .join('rect')
     // .attr('filter', 'url(#brightness)')
-    .attr('class', 'node')
+      .join('foreignObject')
+
+      .attr('class', 'node')
     .attr('x', (d: any) => d.x0)
     .attr('y', (d: any) => d.y0)
     .attr('width', (d: any) => {
@@ -75,20 +77,18 @@ function update<T extends { value: any }>(res: T) {
     .style('fill', '#250160')
     .style('opacity', (d: any) => opacity(d.data.revenue));
 
-  // svg
-  //     .selectAll('text')
-  //     .data(root.leaves())
-  //     .enter()
-  //     .append('text')
-  //     .attr('x', (d: any) => d.x0 + 5)    // +10 to adjust position (more right)
-  //     .attr('y', function(d){ return d.y0+20})    // +20 to adjust position (lower)
-  //     .text(function(d){
-  //       if(d.data.width > 38) {
-  //          return d.data.filmID
-  //       }
-  //     })
-  //     .attr('font-size', '11px')
-  //     .attr('fill', 'white')
+  svg
+    .selectAll('text')
+    .data(root.leaves())
+    .enter()
+    .append('text')
+    .attr('x', function(d: any) { return d.x0 + 5; })    // +10 to adjust position (more right)
+    .attr('y', function(d: any) { return d.y0 + 20; })    // +20 to adjust position (lower)
+    .text(function(d: any) { return `Devices: ${d.data.value}` ; })
+    .attr('font-size', '11px')
+    .attr('fill', 'white');
+
+
 
 }
 
