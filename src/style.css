@@ -1,20 +1,20 @@
 body {
-    margin: 1em 2em;
+  margin: 1em 2em;
 }
 
 h1,
 h3 {
-    color: #555;
-    margin: 0.3em;
-    font-weight: normal;
+  color: #555;
+  margin: 0.3em;
+  font-weight: normal;
 }
 
 h1 {
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 h3 {
-    padding-bottom: 0.8em;
+  padding-bottom: 0.8em;
 }
 
 svg {
@@ -22,37 +22,84 @@ svg {
 
 body,
 text {
-    font-family: 'Avenir', sans-serif;
+  font-family: 'Avenir', sans-serif;
 }
 
 .tooltip {
-    position: fixed;
-    max-width: 200px;
-    padding: 0.5em 1em;
-    color: #fff;
-    background: #555;
-    border-radius: 2px;
-    box-shadow: 1px 1px 3px #bbb;
-    pointer-events: none;
-    opacity: 0;
+  position: fixed;
+  max-width: 200px;
+  padding: 0.5em 1em;
+  color: #fff;
+  background: #555;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px #bbb;
+  pointer-events: none;
+  opacity: 0;
 }
 
 .tip-table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 tr {
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.4);
 }
 
 tr:last-of-type {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 td:first-of-type {
-    padding: 0 0.5em;
+  padding: 0 0.5em;
 }
 
 td {
-    vertical-align: baseline;
+  vertical-align: baseline;
+}
+
+
+
+
+#chart {
+  width: 800px;
+  /* height: 620px; */
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+text {
+  pointer-events: none;
+}
+
+.grandparent text {
+  font-weight: bold;
+}
+
+rect {
+  stroke: #fff;
+  stroke-width: 1px;
+  fill: none;
+}
+
+rect.parent,
+.grandparent rect {
+  stroke-width: 2px;
+}
+
+.children rect.parent,
+.grandparent rect {
+  cursor: pointer;
+}
+
+.children rect.child {
+  opacity: 0;
+}
+
+.children:hover rect.child {
+  opacity: 1;
+  stroke-width: 1px;
+}
+
+.children:hover rect.parent {
+  opacity: 0;
 }

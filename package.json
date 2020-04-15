@@ -45,6 +45,10 @@
   },
   "dependencies": {
     "@types/d3": "^5.7.2",
-    "d3": "^5.15.0"
+    "@types/d3-selection": "^1.4.1",
+    "d3": "^5.15.0",
+    "d3-hierarchy": "^1.1.9",
+    "d3-scale": "^3.2.1",
+    "uuid": "^7.0.3"
   }
 }
