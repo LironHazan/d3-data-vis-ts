@@ -1,34 +1,45 @@
 import * as d3 from 'd3';
+import {HierarchyNode} from 'd3-hierarchy';
 // canvas:
 // https://observablehq.com/@pstuffa/canvas-treemap
 
-function update<T extends { count: any }>(res: T) {
-  // Set dimensions.
-  let container: any = d3.select('body').node();
-  let { width, height }: DOMRect = container.getBoundingClientRect();
-  const margin = { top: 40, right: 40, bottom: 40, left: 40 };
-  width = width - margin.right - margin.left;
-  height = height - margin.top - margin.bottom;
+// Dimensions
+let container: any = d3.select('body').node();
+let { width, height }: DOMRect = container.getBoundingClientRect();
+const margin = { top: 40, right: 40, bottom: 40, left: 40 };
+width = (width / 1.2) - margin.right - margin.left;
+height = ( height / 1.2) - margin.top - margin.bottom;
 
-  const root = d3.hierarchy(res)
+const x = d3.scaleLinear().domain([0, width]).range([0, width]);
+const y = d3.scaleLinear().domain([0, height]).range([0, height]);
+
+// Todo: add types
+function hierarchyDataLayer<T extends { count: any }>(data: T): HierarchyNode<T> {
+  return d3.hierarchy(data)
       .sum(d => d.count)
       .sort((a, b) => b.value - a.value);
+}
 
+function treemapVisLayout<T>(root: HierarchyNode<T>) {
+    d3.treemap()
+      .size([width, height])
+      .paddingTop(15)
+      .paddingRight(20)
+      .paddingInner(10)
+      .paddingOuter(25)
+      // .round(true)
+      (root);
+}
 
+function update<T extends { count: any }>(res: T) {
+  // Hierarchy
+  const root = hierarchyDataLayer(res);
   // Treemap layout.
-  const layout = d3
-    .treemap()
-    .size([width, height])
-     .paddingTop(15)
-     .paddingRight(20)
-     .paddingInner(10)
-     .paddingOuter(25)
-     // .round(true)
-    (root);
+  treemapVisLayout(root);
 
-  const nodes = root.descendants();
+  const nodes: HierarchyNode<T>[] = root.descendants(); // flat nodes
 
-  // Draw base.
+  // Start drawing
   const svg = d3
     .select('.treemap-container')
     .append('svg')
@@ -53,7 +64,7 @@ function update<T extends { count: any }>(res: T) {
   filter
   .append('feGaussianBlur')
   .attr('class', 'blur')
-  .attr('stdDeviation', '1');
+  .attr('stdDeviation', '0.5');
 
   const node = svg.append('g')
     .attr('filter', 'url(#glowness)')
@@ -85,14 +96,14 @@ function update<T extends { count: any }>(res: T) {
       if (!d.parent) {
         return '#1F033D';
       } else return 'rgb(255, 255, 255)';
-    })
-    .style('opacity', (d: any) => opacity(d.data.count));
+    });
+ //   .style('opacity', (d: any) => opacity(d.data.count));
 
 
   node.filter((d: any) => d === root ? d.parent : d.children)
       .attr('cursor', 'pointer')
       .on('click', (d: any) => {
-        return d === root ? update(d) : console.log('in');
+        return;
       });
 
     const fo = svg.selectAll('foreignObject')
@@ -107,7 +118,7 @@ function update<T extends { count: any }>(res: T) {
         .append('div')
       .attr('width', function(d: any) { return d.data.width; })
       .attr('height', function(d: any) { return d.data.width; })
-      .html((d: any) => `<div> 4444 </div>`);
+      .html((d: any) => `<div> ${d.data.name} </div>`);
 
         // There's an issue with drwing inside the generated context need to investigate
       // .append('canvas')
@@ -120,9 +131,6 @@ function update<T extends { count: any }>(res: T) {
       //   purpleNeonRect(ctx, d.x0, d.y0, 20, 20);
       //   return canvas;
       // });
-
-
-
 }
 
 // Load data.

@@ -759,7 +759,203 @@
     },
     {
       "color": "blue",
+      "name":"Net6-b",
+      "count":3,
+      "children":[
+        {
+          "color": "blue",
+          "name":"pc",
+          "count":3534,
+          "children":[
+            {
+              "color": "red",
+               "name":"192.168.0.1"
+            },
+            {
+              "color": "blue",
+              "name":"LinkDistance"
+            },
+            {
+              "color": "red",
+              "name":"MaxFlowMinCut"
+            },
+            {
+              "color": "blue",
+              "name":"ShortestPaths"
+            },
+            {
+              "color": "red",
+              "name":"SpanningTree"
+            }
+          ]
+        },
+        {
+          "color": "red",
+          "name":"mobile",
+          "count":7074,
+          "children":[
+            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            }
+          ]
+        },
+        {
+          "color": "red",
+          "name":"unknown",
+          "count":7074,
+          "children":[
+            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "blue",
       "name":"Net7",
+      "count":3,
+      "children":[
+        {
+          "color": "blue",
+          "name":"pc",
+          "count":3534,
+          "children":[
+            {
+              "color": "red",
+               "name":"192.168.0.1"
+            },
+            {
+              "color": "blue",
+              "name":"LinkDistance"
+            },
+            {
+              "color": "red",
+              "name":"MaxFlowMinCut"
+            },
+            {
+              "color": "blue",
+              "name":"ShortestPaths"
+            },
+            {
+              "color": "red",
+              "name":"SpanningTree"
+            }
+          ]
+        },
+        {
+          "color": "red",
+          "name":"mobile",
+          "count":7074,
+          "children":[
+            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            }
+          ]
+        },
+        {
+          "color": "red",
+          "name":"unknown",
+          "count":7074,
+          "children":[
+            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "blue",
+      "name":"Net7-b",
       "count":3,
       "children":[
         {
@@ -1007,6 +1203,182 @@
     {
       "color": "red",
       "name":"Net9",
+      "count": 6,
+      "children":[
+        {
+          "color": "red",
+          "name":"print",
+          "count":4,
+          "children":[
+            {
+              "name":"127.0.0.1"
+            },
+            {
+               "name":"127.0.0.1"
+            },
+            {
+               "name":"127.0.0.1"
+            },
+            {
+               "name":"127.0.0.1"
+            }
+          ]
+        },
+        {
+          "color": "blue",
+          "name":"pc",
+          "count":3534,
+          "children":[
+            {
+              "color": "red",
+               "name":"192.168.0.1"
+            },
+            {
+              "color": "blue",
+              "name":"LinkDistance"
+            },
+            {
+              "color": "red",
+              "name":"MaxFlowMinCut"
+            },
+            {
+              "color": "blue",
+              "name":"ShortestPaths"
+            },
+            {
+              "color": "red",
+              "name":"SpanningTree"
+            }
+          ]
+        },
+        {
+          "color": "blue",
+          "name":"containers",
+          "count":10,
+          "children":[
+            {
+              "color": "red",
+               "name":"192.168.0.1"
+            },
+            {
+              "color": "blue",
+              "name":"LinkDistance"
+            },
+            {
+              "color": "red",
+              "name":"MaxFlowMinCut"
+            },
+            {
+              "color": "blue",
+              "name":"ShortestPaths"
+            },
+            {
+              "color": "red",
+              "name":"SpanningTree"
+            }
+          ]
+        },
+        {
+          "color": "red",
+          "name":"mobile",
+          "count":200,
+          "children":[
+            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            }
+          ]
+        },
+        {
+          "color": "red",
+          "name":"srvs",
+          "count":200,
+          "children":[
+            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            }
+          ]
+        },
+        {
+          "color": "red",
+          "name":"unknown",
+          "count":7074,
+          "children":[
+            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            },            {
+              "color": "red",
+              "name":"192.168.0.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "red",
+      "name":"Net10",
       "count": 6,
       "children":[
         {
