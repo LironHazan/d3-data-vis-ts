@@ -14,9 +14,9 @@ const x = d3.scaleLinear().domain([0, width]).range([0, width]);
 const y = d3.scaleLinear().domain([0, height]).range([0, height]);
 
 // Todo: add types
-function hierarchyDataLayer<T extends { count: any }>(data: T): HierarchyNode<T> {
+function hierarchyDataLayer<T extends { total: any }>(data: T): HierarchyNode<T> {
   return d3.hierarchy(data)
-      .sum(d => d.count)
+      .sum(d => d.total)
       .sort((a, b) => b.value - a.value);
 }
 
@@ -31,13 +31,14 @@ function treemapVisLayout<T>(root: HierarchyNode<T>) {
       (root);
 }
 
-function update<T extends { count: any }>(res: T) {
+function update<T extends { total: any }>(res: T) {
   // Hierarchy
   const root = hierarchyDataLayer(res);
   // Treemap layout.
   treemapVisLayout(root);
 
   const nodes: HierarchyNode<T>[] = root.descendants(); // flat nodes
+  // const nodes  = root.children; // flat nodes
 
   // Start drawing
   const svg = d3
@@ -115,10 +116,15 @@ function update<T extends { count: any }>(res: T) {
      // .attr('width', function(d: any) { return d.data.width; })
      // .attr('height', function(d: any) { return d.data.height; })
       .append('xhtml:body')
-        .append('div')
+      .append('div')
       .attr('width', function(d: any) { return d.data.width; })
-      .attr('height', function(d: any) { return d.data.width; })
-      .html((d: any) => `<div> ${d.data.name} </div>`);
+      .attr('height', function(d: any) { return d.data.height; })
+      .html((d: any) => {
+        const name = d.data.name;
+        if (name) {
+          return `<div> ${ name } </div>`;
+        }
+      });
 
         // There's an issue with drwing inside the generated context need to investigate
       // .append('canvas')
@@ -135,8 +141,9 @@ function update<T extends { count: any }>(res: T) {
 
 // Load data.
 export function loadTreemap() {
-  d3.json('./data/data.json').then(res => {
-    update(res);
+  d3.json('./data/hidden/wanted.json').then(res => {
+    const { data } = res;
+    update(data);
   });
 }
 
