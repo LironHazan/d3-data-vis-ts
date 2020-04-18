@@ -18,10 +18,10 @@ export class TreemapInteractive {
         d3.treemap()
             .tile(d3.treemapResquarify.ratio(height / width * 0.5 * (1 + Math.sqrt(5))))
             .size([width, height])
-            .paddingTop(15)
+            .paddingTop(10)
             .paddingRight(20)
-            .paddingInner(10)
-            .paddingOuter(25)
+            .paddingInner(20)
+            .paddingOuter(30)
             // .round(true)
             (root);
     }
@@ -58,6 +58,8 @@ export class TreemapInteractive {
     static rect(rect: any, {x , y}: Positions) {
         rect.attr('x', function(d: any) { return x(d.x0); })
             .attr('y', function(d: any) { return y(d.y0); })
+            .attr('ry', '4')
+            .attr('rx', '4')
             .attr('width', function(d: any) {
                 return x(d.x1) - x(d.x0);
             })
@@ -77,7 +79,7 @@ export class TreemapInteractive {
                 return this.getComputedTextLength() < w - 6 ? 1 : 0; });
     }
 
-    static text2(text: any, { x, y }: Positions) {
+    static bottomText(text: any, { x, y }: Positions) {
         text.attr('x', function(d: any) {
             return x(d.x1) - this.getComputedTextLength() - 6;
         }).attr('y', function(d: any) { return y(d.y1) - 6; })
@@ -112,6 +114,15 @@ export class TreemapInteractive {
             .classed('children', true)
             .on('click', transition);
 
+        g.append('text')
+            .attr('class', 'ctext')
+            .text(function(d: any) {
+                if (d.depth === 1) {
+                    return `${d.data.externalIp}`;
+                }})
+            .attr('fill', 'white')
+            .call(TreemapInteractive.bottomText, {x , y});
+
         const children = g.selectAll('.child')
             .data(function(d: any) { return d._children || [d]; })
             .enter().append('g');
@@ -124,8 +135,11 @@ export class TreemapInteractive {
 
         children.append('text')
             .attr('class', 'ctext')
-            .text(function(d: any) { return d.data.name; })
-            .call(TreemapInteractive.text2, {x , y});
+            .text(function(d: any) {
+                if (d.depth === 1) {
+                return `${d.data.localIp}`;
+            }})
+            .call(TreemapInteractive.bottomText, {x , y});
 
         g.append('rect')
             .attr('class', 'parent')
@@ -133,24 +147,33 @@ export class TreemapInteractive {
 
         const t = g.append('text')
             .attr('class', 'ptext')
+            .attr('fill', (d: any) => { if (d.depth === 1) {
+                return 'white';
+            } })
             .attr('dy', '.75em');
 
         t.append('tspan')
-            .text(function(d: any) { return d.data.name; });
-
-        t.append('tspan')
-            .attr('dy', '1.0em')
-            .text(function(d: any) { return d.data.total; });
+            .text(function(d: any) {
+                if (d.depth === 1) {
+                return `${d.data.name} ${d.data.total}`;
+            } else {
+                return `${d.data.name}`;
+            }});
 
         t.call(TreemapInteractive.text, {x , y});
 
         g.selectAll('rect')
+            .attr('stroke', (d: any) => {
+                if (d?.data.managedState && d?.data.managedState === 'Unsecured') {
+                    return 'red';
+                }
+            })
             .style('fill', function(d: any) { return color(d.data.name); });
 
         function transition(d: any) {
             if (transitioning || !d) return;
             transitioning = true;
-            const { text, text2, rect } = TreemapInteractive;
+            const { text, bottomText, rect } = TreemapInteractive;
             const g2 = TreemapInteractive.render(d, svg, rootLevel, { x, y }, color),
                 t1 = firstDepth.transition().duration(750),
                 t2 = g2.transition().duration(750);
@@ -172,8 +195,8 @@ export class TreemapInteractive {
             // Transition to the new view.
             t1.selectAll('.ptext').call(text, {x , y}).style('fill-opacity', 0);
             t2.selectAll('.ptext').call(text, {x , y}).style('fill-opacity', 1);
-            t1.selectAll('.ctext').call(text2, {x , y}).style('fill-opacity', 0);
-            t2.selectAll('.ctext').call(text2, {x , y}).style('fill-opacity', 1);
+            t1.selectAll('.ctext').call(bottomText, {x , y}).style('fill-opacity', 0);
+            t2.selectAll('.ctext').call(bottomText, {x , y}).style('fill-opacity', 1);
             t1.selectAll('rect').call(rect, {x , y});
             t2.selectAll('rect').call(rect, {x , y});
 
@@ -202,7 +225,7 @@ function chart(data: any) {
         const { width, height, margin, x, y } = TreemapUtils.getRectBounding();
         // Range ord todo: change colors
         const color = d3.scaleOrdinal()
-        .range(d3.schemeDark2.map(function(c: any) { c = d3.rgb(c); c.opacity = 0.6; return c; }));
+        .range(d3.schemeBuPu[8].map(function(c: any) { c = d3.rgb(c); c.opacity = 0.8; return c; }));
 
         let svg = d3.select('#treemap-container')
           .append('svg')
@@ -222,16 +245,18 @@ function chart(data: any) {
           .append('rect')
             .attr('y', -margin.top)
             .attr('width', width)
-            .attr('height', margin.top);
+            .attr('height', 30);
 
         rootLevelSelector
           .append('text')
             .attr('x', 6)
             .attr('y', 6 - margin.top)
-            .attr('dy', '.75em');
+            .attr('dy', '.75em')
+            .attr('fill', 'white');
 
     const { hierarchyDataLayer, accumulate, layout, treemapVisLayout, render } = TreemapInteractive;
     const root = hierarchyDataLayer(data);
+
     accumulate(root);
     layout(root);
     treemapVisLayout(root, width, height);
