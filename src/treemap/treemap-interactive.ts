@@ -7,9 +7,6 @@ import {TreemapUtils} from './treemapUtils';
 
 // Dimensions
 const { width, height, margin } = TreemapUtils.getDimensions('body');
-let formatNumber = d3.format(',d');
-
-let transitioning: boolean;
 
 const x = d3.scaleLinear()
     .domain([0, width])
@@ -62,7 +59,7 @@ function main(data2: any) {
 
         let rootLevelSelector = svg
           .append('g')
-            .attr('class', 'grandparent');
+            .attr('class', 'root-level');
 
         rootLevelSelector
           .append('rect')
@@ -77,6 +74,7 @@ function main(data2: any) {
             .attr('dy', '.75em');
 
     const root = hierarchyDataLayer(data2);
+    initialize(root);
     accumulate(root);
     layout(root);
     treemapVisLayout(root);
@@ -112,18 +110,20 @@ function layout(node: any) {
     }
 }
 
-function render(node: any, svg: any, rootLevelSelector: any) {
-    rootLevelSelector
+function render(node: any, svg: any, rootLevel: any) {
+    let transitioning: boolean;
+
+    rootLevel
         .datum(node.parent)
         .on('click', transition)
         .select('text')
         .text(node.ancestors().reverse().map((d: any) => d.data.name).join('/'));
 
-    const g1 = svg.insert('g', '.grandparent')
+    const firstDepth = svg.insert('g', '.root-level')
         .datum(node)
         .attr('class', 'depth');
 
-    const g = g1.selectAll('g')
+    const g = firstDepth.selectAll('g')
         .data(node._children)
         .enter().append('g');
 
@@ -169,8 +169,8 @@ function render(node: any, svg: any, rootLevelSelector: any) {
     function transition(d: any) {
         if (transitioning || !d) return;
         transitioning = true;
-        const g2 = render(d, svg, rootLevelSelector),
-            t1 = g1.transition().duration(750),
+        const g2 = render(d, svg, rootLevel),
+            t1 = firstDepth.transition().duration(750),
             t2 = g2.transition().duration(750);
 
         // Update the domain only after entering new elements.
@@ -223,6 +223,13 @@ function text2(text: any) {
         const w = x(d.x1) - x(d.x0);
         return this.getComputedTextLength() < w - 6 ? 1 : 0;
     });
+}
+
+function initialize(root: any) {
+    root.x = root.y = 0;
+    root.x1 = width;
+    root.y1 = height;
+    root.depth = 0;
 }
 
 function rect(rect: any) {

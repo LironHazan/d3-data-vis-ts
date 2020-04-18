@@ -84,7 +84,7 @@ rect {
 text {
   pointer-events: none;
 }
-.grandparent text {
+.root-level text {
   font-weight: bold;
 }
 rect {
@@ -92,17 +92,17 @@ rect {
   stroke: #fff;
 }
 rect.parent,
-.grandparent rect {
+.root-level rect {
   stroke-width: 2px;
 }
-.grandparent rect {
+.root-level rect {
   fill: orange;
 }
-.grandparent:hover rect {
+.root-level:hover rect {
   fill: #ee9700;
 }
 .children rect.parent,
-.grandparent rect {
+.root-level rect {
   cursor: pointer;
 }
 .children rect.parent {
