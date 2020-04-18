@@ -1,24 +1,14 @@
 import * as d3 from 'd3';
 import { HierarchyNode } from 'd3-hierarchy';
-import {TreemapUtils} from './treemapUtils';
+import {Positions, TreemapUtils} from './treemapUtils';
+import {ScaleOrdinal} from 'd3';
 
 // todo: canvas:
 // https://observablehq.com/@pstuffa/canvas-treemap
 
-// Dimensions
-const { width, height, margin } = TreemapUtils.getDimensions('body');
-
-const x = d3.scaleLinear()
-    .domain([0, width])
-    .range([0, width]);
-
-const y = d3.scaleLinear()
-    .domain([0, height - margin.top - margin.bottom])
-    .range([0, height - margin.top - margin.bottom]);
-
-const color = d3.scaleOrdinal()
-    .range(d3.schemeDark2.map(function(c: any) { c = d3.rgb(c); c.opacity = 0.6; return c; }));
-
+// export class TreemapInteractive {
+//
+// }
 
 function hierarchyDataLayer<T extends { total: any }>(data: T): HierarchyNode<T> {
     return d3.hierarchy(data)
@@ -26,7 +16,7 @@ function hierarchyDataLayer<T extends { total: any }>(data: T): HierarchyNode<T>
         .sort((a: HierarchyNode<T> , b: HierarchyNode<T> ) => b.height - a.height || b.value - a.value);
 }
 
-function treemapVisLayout<T>(root: HierarchyNode<T>) {
+function treemapVisLayout<T>(root: HierarchyNode<T>, width: number, height: number) {
     d3.treemap()
         .tile(d3.treemapResquarify.ratio(height / width * 0.5 * (1 + Math.sqrt(5))))
         .size([width, height])
@@ -47,6 +37,12 @@ export async function loadZoomable() {
 }
 
 function main(data2: any) {
+    // Dimensions
+        const { width, height, margin, x, y } = TreemapUtils.getRectBounding();
+        // Range ord todo: change colors
+        const color = d3.scaleOrdinal()
+        .range(d3.schemeDark2.map(function(c: any) { c = d3.rgb(c); c.opacity = 0.6; return c; }));
+
         let svg = d3.select('#treemap-container')
           .append('svg')
             .attr('width', width - margin.left - margin.right)
@@ -74,11 +70,11 @@ function main(data2: any) {
             .attr('dy', '.75em');
 
     const root = hierarchyDataLayer(data2);
-    initialize(root);
+    initialize(root, width, height);
     accumulate(root);
     layout(root);
-    treemapVisLayout(root);
-    render(root, svg, rootLevelSelector);
+    treemapVisLayout(root, width, height);
+    render(root, svg, rootLevelSelector, { x, y }, color);
 }
 
 // Aggregate the values for internal nodes. This is normally done by the
@@ -110,7 +106,11 @@ function layout(node: any) {
     }
 }
 
-function render(node: any, svg: any, rootLevel: any) {
+function render(node: any,
+                svg: any,
+                rootLevel: any,
+                { x, y }: Positions,
+                color: ScaleOrdinal<string, unknown>) {
     let transitioning: boolean;
 
     rootLevel
@@ -137,18 +137,18 @@ function render(node: any, svg: any, rootLevel: any) {
 
     children.append('rect')
         .attr('class', 'child')
-        .call(rect)
+        .call(rect, {x , y})
         .append('title')
         .text(function(d: any) { return d.data.name + ' (' + d.data.total + ')'; });
 
     children.append('text')
         .attr('class', 'ctext')
         .text(function(d: any) { return d.data.name; })
-        .call(text2);
+        .call(text2, {x , y});
 
     g.append('rect')
         .attr('class', 'parent')
-        .call(rect);
+        .call(rect, {x , y});
 
     const t = g.append('text')
         .attr('class', 'ptext')
@@ -161,7 +161,7 @@ function render(node: any, svg: any, rootLevel: any) {
         .attr('dy', '1.0em')
         .text(function(d: any) { return d.data.total; });
 
-    t.call(text);
+    t.call(text, {x , y});
 
     g.selectAll('rect')
         .style('fill', function(d: any) { return color(d.data.name); });
@@ -169,7 +169,7 @@ function render(node: any, svg: any, rootLevel: any) {
     function transition(d: any) {
         if (transitioning || !d) return;
         transitioning = true;
-        const g2 = render(d, svg, rootLevel),
+        const g2 = render(d, svg, rootLevel, { x, y }, color),
             t1 = firstDepth.transition().duration(750),
             t2 = g2.transition().duration(750);
 
@@ -188,12 +188,12 @@ function render(node: any, svg: any, rootLevel: any) {
         g2.selectAll('text').style('fill-opacity', 0);
 
         // Transition to the new view.
-        t1.selectAll('.ptext').call(text).style('fill-opacity', 0);
-        t2.selectAll('.ptext').call(text).style('fill-opacity', 1);
-        t1.selectAll('.ctext').call(text2).style('fill-opacity', 0);
-        t2.selectAll('.ctext').call(text2).style('fill-opacity', 1);
-        t1.selectAll('rect').call(rect);
-        t2.selectAll('rect').call(rect);
+        t1.selectAll('.ptext').call(text, {x , y}).style('fill-opacity', 0);
+        t2.selectAll('.ptext').call(text, {x , y}).style('fill-opacity', 1);
+        t1.selectAll('.ctext').call(text2, {x , y}).style('fill-opacity', 0);
+        t2.selectAll('.ctext').call(text2, {x , y}).style('fill-opacity', 1);
+        t1.selectAll('rect').call(rect, {x , y});
+        t2.selectAll('rect').call(rect, {x , y});
 
         // Remove the old node when the transition is finished.
         t1.remove().on('end', function() {
@@ -204,7 +204,7 @@ function render(node: any, svg: any, rootLevel: any) {
     return g;
 }
 
-function text(text: any) {
+function text(text: any, { x, y }: Positions) {
     text.selectAll('tspan')
         .attr('x', function(d: any) { return x(d.x0) + 6; });
 
@@ -215,7 +215,7 @@ function text(text: any) {
             return this.getComputedTextLength() < w - 6 ? 1 : 0; });
 }
 
-function text2(text: any) {
+function text2(text: any, { x, y }: Positions) {
     text.attr('x', function(d: any) {
         return x(d.x1) - this.getComputedTextLength() - 6;
     }).attr('y', function(d: any) { return y(d.y1) - 6; })
@@ -225,14 +225,14 @@ function text2(text: any) {
     });
 }
 
-function initialize(root: any) {
+function initialize(root: any, width: number, height: number) {
     root.x = root.y = 0;
     root.x1 = width;
     root.y1 = height;
     root.depth = 0;
 }
 
-function rect(rect: any) {
+function rect(rect: any, {x , y}: Positions) {
     rect.attr('x', function(d: any) { return x(d.x0); })
         .attr('y', function(d: any) { return y(d.y0); })
         .attr('width', function(d: any) {
