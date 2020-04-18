@@ -27,21 +27,21 @@ export class TreemapInteractive {
     }
 
     // Aggregate the values for internal nodes. This is normally done by the
-// treemap layout, but not here because of our custom implementation.
-// We also take a snapshot of the original children (_children) to avoid
-// the children being overwritten when when layout is computed.
+    // treemap layout, but not here because of our custom implementation.
+    // We also take a snapshot of the original children (_children) to avoid
+    // the children being overwritten when when layout is computed.
     static accumulate(d: any) {
         return (d._children = d.children)
             ? d.value = d.children.reduce(function<T, V>(p: T, v: V) { return p + TreemapInteractive.accumulate(v); }, 0) : d.value;
     }
 
     // Compute the treemap layout recursively such that each group of siblings
-// uses the same size (1×1) rather than the dimensions of the parent cell.
-// This optimizes the layout for the current zoom state. Note that a wrapper
-// object is created for the parent node for each group of siblings so that
-// the parent’s dimensions are not discarded as we recurse. Since each group
-// of sibling was laid out in 1×1, we must rescale to fit using absolute
-// coordinates. This lets us use a viewport to zoom.
+    // uses the same size (1×1) rather than the dimensions of the parent cell.
+    // This optimizes the layout for the current zoom state. Note that a wrapper
+    // object is created for the parent node for each group of siblings so that
+    // the parent’s dimensions are not discarded as we recurse. Since each group
+    // of sibling was laid out in 1×1, we must rescale to fit using absolute
+    // coordinates. This lets us use a viewport to zoom.
     static layout(node: any) {
         if (node._children) {
             for (const child of node._children) {
