@@ -1,9 +1,9 @@
 import { loadBubble } from './circle-pack/bubbles';
-import {loadZoomable} from './treemap/treemap-interactive';
+import {loadInteractiveTreemap} from './treemap/treemap-interactive';
 
 const main = async () => {
   await loadBubble();
-  await loadZoomable();
+  await loadInteractiveTreemap();
 };
 
 main().then(() => console.log('started'));
