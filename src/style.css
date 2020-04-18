@@ -18,9 +18,6 @@ h3 {
   padding-bottom: 0.8em;
 }
 
-svg {
-}
-
 body,
 text {
   font-family: 'Avenir', sans-serif;
@@ -58,21 +55,20 @@ td {
   vertical-align: baseline;
 }
 
-
 text {
   pointer-events: none;
 }
 
-.grandparent text {
-  font-weight: bold;
-}
 
-.treemap-container {
+#treemap-container {
   //background: lightgray;
+  margin: 100px 55px;
+  /*width: 100%;*/
+  /*height: 100%;*/
 }
 
-.treemap-container svg {
-  transform: rotate3d(1, 4, 1, 15deg);
+#treemap-container svg {
+ // transform: rotate3d(1, 4, 1, 15deg);
 }
 
 rect {
@@ -81,4 +77,39 @@ rect {
   stroke-width: 2px;
 }
 
+
+
+
+
+text {
+  pointer-events: none;
+}
+.root-level text {
+  font-weight: bold;
+}
+rect {
+  fill: none;
+  stroke: #fff;
+}
+rect.parent,
+.root-level rect {
+  stroke-width: 2px;
+}
+.root-level rect {
+  fill: orange;
+}
+.root-level:hover rect {
+  fill: #ee9700;
+}
+.children rect.parent,
+.root-level rect {
+  cursor: pointer;
+}
+.children rect.parent {
+  fill: #bbb;
+  fill-opacity: 0.5;
+}
+.children:hover rect.child {
+  fill: #bbb;
+}
 
