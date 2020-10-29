@@ -1,14 +1,10 @@
-import { namespaces } from 'd3-selection';
-
 export function svgToPng(node: SVGGraphicsElement, width: number, height: number): Promise<void> {
-    const svgString = getSVGString(node);
-    return svgStrToImage(svgString, width, height);
+    return svgStrToImage(getSVGString(node), width, height);
 }
 
 function getSVGString(svgNode: SVGGraphicsElement) {
-    svgNode.setAttribute('xlink', namespaces.xhtml);
-    const cssStyleText = getCSSStyles(svgNode);
-    appendCSS(cssStyleText, svgNode);
+    svgNode.setAttribute('xlink', 'xmlns="http://www.w3.org/2000/svg"');
+    appendCSS(getCSSStyles(svgNode), svgNode);
     const serializer = new XMLSerializer();
     return serializer.serializeToString(svgNode);
 }
@@ -40,7 +36,7 @@ function getCSSStyles(parentElement: any) {
                 extractedCSSRules.push(rule.cssText);
             }
             // If the node includes the css rule push it to the extracted rules
-            const ruleMatches = nodesToCheck.some((_rule) => _rule.matches(rule.selectorText));
+            const ruleMatches = nodesToCheck.some((r) => r.matches(rule.selectorText));
             if (ruleMatches) {
                 extractedCSSRules.push(rule.cssText);
             }
@@ -66,14 +62,14 @@ function svgStrToImage(svgString: string, width: number, height: number): Promis
         image.height = height;
         image.crossOrigin = 'Anonymous';
 
-        image.onload = function () {
+        image.onload = () => {
             const canvas = document.createElement('canvas');
             const context = canvas.getContext('2d');
 
             canvas.width = image.width;
             canvas.height = image.height;
             context.drawImage(image, 0, 0, canvas.width, canvas.height);
-            canvas.toBlob(function (blob: any) {
+            canvas.toBlob( (blob: any) => {
                 resolve( blob );
             });
         };
@@ -82,5 +78,6 @@ function svgStrToImage(svgString: string, width: number, height: number): Promis
             reject(err);
         };
         image.src = imgsrc;
+        console.log(imgsrc);
     });
 }
