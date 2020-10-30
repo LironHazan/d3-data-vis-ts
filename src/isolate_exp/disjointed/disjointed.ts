@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
+import {ExpModel, FirstLevelNode, Link, Node, NodeType, SecondLevelNode} from './exp-model';
 
-function graph(data: any, width = 680, height = 680, ) {
+function graph(data: ExpModel<any, any>, width = 680, height = 680, ) {
 
     const links = data.links.map((d: object) => Object.create(d));
     const nodes = data.nodes.map((d: object) => Object.create(d));
@@ -21,8 +22,8 @@ function graph(data: any, width = 680, height = 680, ) {
         .attr('stroke-opacity', 0)
         .selectAll('line')
         .data(links)
-        .join('line')
-        .attr('stroke-width', (d: { value: number; }) => Math.sqrt(d.value));
+        .join('line');
+        // .attr('stroke-width', (d: { value: number; }) => Math.sqrt(d.value));
 
     const node = svg.append('g')
         // .attr('stroke', (d: any) => {
@@ -33,27 +34,27 @@ function graph(data: any, width = 680, height = 680, ) {
         .data(nodes)
         .join('circle')
         .attr('r', (d: any) => {
-            if (d.group === 'Citing Patents') {
+            if (d.type === NodeType.second_level) {
                 return 10;
             }
             return 10;
         })
         .attr('stroke', (d: any) => {
-        if (d.group !== 'Citing Patents') {
+        if (d.type === NodeType.first_level) {
             return 'pink';
         }
     }).attr('stroke-width', (d: any) => {
-            if (d.group !== 'Citing Patents') {
+            if (d.type === NodeType.first_level) {
                 return 8;
             }})
         .attr('fill', (d: any) => {
-            if (d.group === 'Citing Patents') {
+            if (d.type === NodeType.second_level) {
                 return '#DBDFFF';
             }
             return '#3E95FE';
         })
         // parents only
-        .filter((d: any) => d.group !== 'Citing Patents');
+       // .filter((d: any) => d.type === NodeType.first_level);
 
 
     //todo:
@@ -61,7 +62,8 @@ function graph(data: any, width = 680, height = 680, ) {
     // Citing Patents
     // first state filter all Citing Patents
     // onClick / zoom in will add that certain
-    // future model - lower layer domain agnostic and higher level transforms from domain to domain agnostic
+    // future model - lower layer domain agnostic with
+    // and higher level transforms from domain to domain agnostic
 
     node.on('click', (d: any) => {
         console.log(d);
@@ -85,10 +87,40 @@ function graph(data: any, width = 680, height = 680, ) {
     return svg.node();
 }
 
+function transformToGraphModel<N  extends { group: string, id: string }, L extends { target: any, source: any}>(data: ExpModel<N, L>): ExpModel<any, Link> {
+    const nodes = data.nodes
+        .map( (node: any) => {
+        node.size = 2;
+        node.shape = 'circle';
+        node.type = node.group === 'Cited Works' ? NodeType.first_level : NodeType.second_level;
+       switch (node.type) {
+           case NodeType.first_level:
+               node.levelIntersection = false;
+               node. intersectionColor = '';
+               node.innerCircleColor = '';
+               node.innerCircleSize = 5;
+               node.innerCircleStroke = '';
+               node.outerCircleColor = '';
+               node.outerCircleSize = 5;
+               break;
+           case NodeType.second_level:
+                node.circleColor =  '';
+                node.circleStroke = '';
+       }
+        return node;
+    });
+
+    const links: Link[] = data.links.map( (link) => ({
+        source: link.source,
+        target: link.target
+    }));
+    return { nodes, links };
+}
+
 export function loadGraph() {
     d3.json('../data/graph.json').then(data => {
-        graph(data);
+        const tdata = transformToGraphModel(data);
+        graph(tdata);
     });
-    // graph();
 }
 
