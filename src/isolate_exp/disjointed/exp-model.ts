@@ -10,6 +10,8 @@ interface CommonNodeAttributes {
     size: number; // if there's no levelIntersection equals to outerCircleSize
     shape: 'circle';
     type: NodeType;
+    links: Link[];
+    children: any[];
 }
 
 export interface FirstLevelNode {
@@ -25,6 +27,10 @@ export interface FirstLevelNode {
 export interface SecondLevelNode {
     circleColor: string;
     circleStroke: string;
+}
+
+export interface DisconnectedNode {
+
 }
 
 export type Node = CommonNodeAttributes & (FirstLevelNode | SecondLevelNode );
