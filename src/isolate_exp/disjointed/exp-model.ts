@@ -12,6 +12,7 @@ interface CommonNodeAttributes {
     type: NodeType;
     links: Link[];
     children: any[];
+    parent: Node | null;
 }
 
 export interface FirstLevelNode {

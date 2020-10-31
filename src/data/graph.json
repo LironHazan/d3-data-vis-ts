@@ -199,12 +199,6 @@
       "citing_patents_count": 1
     },
     {
-      "id": "Nrf2 impacts cellular bioenergetics by controlling substrate availability for mitochondrial respiration",
-      "group": "Cited Works",
-      "radius": 1,
-      "citing_patents_count": 1
-    },
-    {
       "id": "The anti-inflammatory compound BAY 11-7082 is a potent inhibitor of Protein Tyrosine Phosphatases",
       "group": "Cited Works",
       "radius": 1,
@@ -463,6 +457,198 @@
       "citing_patents_count": 1
     },
     {
+      "id": "Foo1.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo2.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo3.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo4.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo11.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo12.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo13.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo14.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo21.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo22.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo23.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo24.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo111.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo112.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo113.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo114.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo31.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo32.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo33.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo34.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo311.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo312.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo313.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo314.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo231.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo322.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo323.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo324.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo311.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo312.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo313.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo314.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
       "id": "Optimisation of 6-substituted isoquinolin-1-amine based ROCK-I inhibitors",
       "group": "Cited Works",
       "radius": 4,
@@ -605,15 +791,7 @@
       "group": "Citing Patents"
     },
     {
-      "id": "074-937-457-594-345",
-      "group": "Citing Patents"
-    },
-    {
       "id": "081-355-367-506-27X",
-      "group": "Citing Patents"
-    },
-    {
-      "id": "048-634-530-447-798",
       "group": "Citing Patents"
     },
     {
@@ -637,10 +815,6 @@
       "group": "Citing Patents"
     },
     {
-      "id": "016-712-604-622-721",
-      "group": "Citing Patents"
-    },
-    {
       "id": "086-316-087-480-933",
       "group": "Citing Patents"
     },
@@ -653,35 +827,7 @@
       "group": "Citing Patents"
     },
     {
-      "id": "036-789-224-520-054",
-      "group": "Citing Patents"
-    },
-    {
-      "id": "106-594-488-484-12X",
-      "group": "Citing Patents"
-    },
-    {
       "id": "125-726-727-125-409",
-      "group": "Citing Patents"
-    },
-    {
-      "id": "161-487-188-181-03X",
-      "group": "Citing Patents"
-    },
-    {
-      "id": "076-538-237-089-675",
-      "group": "Citing Patents"
-    },
-    {
-      "id": "051-324-518-696-462",
-      "group": "Citing Patents"
-    },
-    {
-      "id": "198-017-973-913-570",
-      "group": "Citing Patents"
-    },
-    {
-      "id": "156-653-831-632-101",
       "group": "Citing Patents"
     },
     {
@@ -745,19 +891,11 @@
       "group": "Citing Patents"
     },
     {
-      "id": "141-482-415-400-338",
-      "group": "Citing Patents"
-    },
-    {
       "id": "149-129-599-518-595",
       "group": "Citing Patents"
     },
     {
       "id": "156-286-485-464-499",
-      "group": "Citing Patents"
-    },
-    {
-      "id": "001-353-214-346-040",
       "group": "Citing Patents"
     },
     {
@@ -817,10 +955,6 @@
       "group": "Citing Patents"
     },
     {
-      "id": "110-082-309-221-187",
-      "group": "Citing Patents"
-    },
-    {
       "id": "128-382-566-327-896",
       "group": "Citing Patents"
     },
@@ -834,10 +968,6 @@
     },
     {
       "id": "026-638-223-054-804",
-      "group": "Citing Patents"
-    },
-    {
-      "id": "048-208-660-423-215",
       "group": "Citing Patents"
     },
     {
@@ -873,10 +1003,6 @@
       "group": "Citing Patents"
     },
     {
-      "id": "188-803-921-043-695",
-      "group": "Citing Patents"
-    },
-    {
       "id": "191-147-881-232-285",
       "group": "Citing Patents"
     },
@@ -902,18 +1028,6 @@
     },
     {
       "id": "074-598-665-914-143",
-      "group": "Citing Patents"
-    },
-    {
-      "id": "190-195-697-065-907",
-      "group": "Citing Patents"
-    },
-    {
-      "id": "031-461-589-086-771",
-      "group": "Citing Patents"
-    },
-    {
-      "id": "167-851-091-520-257",
       "group": "Citing Patents"
     },
     {
@@ -986,10 +1100,6 @@
     },
     {
       "id": "186-389-876-954-313",
-      "group": "Citing Patents"
-    },
-    {
-      "id": "168-483-508-794-377",
       "group": "Citing Patents"
     },
     {
@@ -1297,14 +1407,6 @@
       "group": "Citing Patents"
     },
     {
-      "id": "040-389-070-176-191",
-      "group": "Citing Patents"
-    },
-    {
-      "id": "076-478-479-475-120",
-      "group": "Citing Patents"
-    },
-    {
       "id": "034-190-802-321-708",
       "group": "Citing Patents"
     },
@@ -1552,18 +1654,8 @@
       "value": 2
     },
     {
-      "source": "Structural basis of PROTAC cooperative recognition for selective protein degradation.",
-      "target": "074-937-457-594-345",
-      "value": 2
-    },
-    {
       "source": "The influence of rough lipopolysaccharide structure on molecular interactions with mammalian antimicrobial peptides",
       "target": "081-355-367-506-27X",
-      "value": 2
-    },
-    {
-      "source": "New Synthetic Routes to Triazolo-benzodiazepine Analogues: Expanding the Scope of the Bump-and-Hole Approach for Selective Bromo and Extra-Terminal (BET) Bromodomain Inhibition.",
-      "target": "048-634-530-447-798",
       "value": 2
     },
     {
@@ -1592,11 +1684,6 @@
       "value": 2
     },
     {
-      "source": "SIK2 regulates CRTCs, HDAC4 and glucose uptake in adipocytes",
-      "target": "016-712-604-622-721",
-      "value": 2
-    },
-    {
       "source": "Metabotropic Glutamate Receptor 5 Negative Allosteric Modulators: Discovery of 2-Chloro-4-[1-(4-fluorophenyl)-2,5-dimethyl-1H-imidazol-4-ylethynyl]pyridine (Basimglurant, RO4917523), a Promising Novel Medicine for Psychiatric Diseases",
       "target": "086-316-087-480-933",
       "value": 2
@@ -1612,53 +1699,13 @@
       "value": 2
     },
     {
-      "source": "New Monocyclic, Bicyclic, and Tricyclic Ethynylcyanodienones as Activators of the Keap1/Nrf2/ARE Pathway and Inhibitors of Inducible Nitric Oxide Synthase",
-      "target": "036-789-224-520-054",
-      "value": 2
-    },
-    {
-      "source": "Palmitoylation of the Na/Ca exchanger cytoplasmic loop controls its inactivation and internalization during stress signaling",
-      "target": "106-594-488-484-12X",
-      "value": 2
-    },
-    {
       "source": "Molecular Cloning and Functional Characterization of Components of the Capsule Biosynthesis Complex of Neisseria meningitidis Serogroup A TOWARD IN VITRO VACCINE PRODUCTION",
       "target": "125-726-727-125-409",
       "value": 2
     },
     {
       "source": "A bump-and-hole approach to engineer controlled selectivity of BET bromodomain chemical probes",
-      "target": "161-487-188-181-03X",
-      "value": 2
-    },
-    {
-      "source": "A bump-and-hole approach to engineer controlled selectivity of BET bromodomain chemical probes",
-      "target": "076-538-237-089-675",
-      "value": 2
-    },
-    {
-      "source": "A bump-and-hole approach to engineer controlled selectivity of BET bromodomain chemical probes",
-      "target": "051-324-518-696-462",
-      "value": 2
-    },
-    {
-      "source": "A bump-and-hole approach to engineer controlled selectivity of BET bromodomain chemical probes",
-      "target": "198-017-973-913-570",
-      "value": 2
-    },
-    {
-      "source": "A bump-and-hole approach to engineer controlled selectivity of BET bromodomain chemical probes",
-      "target": "156-653-831-632-101",
-      "value": 2
-    },
-    {
-      "source": "A bump-and-hole approach to engineer controlled selectivity of BET bromodomain chemical probes",
       "target": "178-739-712-688-618",
-      "value": 2
-    },
-    {
-      "source": "A bump-and-hole approach to engineer controlled selectivity of BET bromodomain chemical probes",
-      "target": "048-634-530-447-798",
       "value": 2
     },
     {
@@ -1674,11 +1721,6 @@
     {
       "source": "Crystallographic analysis of Neisseria meningitidis PorB extracellular loops potentially implicated in TLR2 recognition",
       "target": "119-453-428-180-987",
-      "value": 2
-    },
-    {
-      "source": "The LKB1-salt-inducible kinase pathway functions as a key gluconeogenic suppressor in the liver",
-      "target": "016-712-604-622-721",
       "value": 2
     },
     {
@@ -1737,11 +1779,6 @@
       "value": 2
     },
     {
-      "source": "Kv1.3 inhibitors have differential effects on glucose uptake and AMPK activity in skeletal muscle cell lines and mouse ex vivo skeletal muscle",
-      "target": "141-482-415-400-338",
-      "value": 2
-    },
-    {
       "source": "Restoration of CFTR function in patients with cystic fibrosis carrying the F508del-CFTR mutation",
       "target": "149-129-599-518-595",
       "value": 2
@@ -1749,11 +1786,6 @@
     {
       "source": "Restoration of CFTR function in patients with cystic fibrosis carrying the F508del-CFTR mutation",
       "target": "156-286-485-464-499",
-      "value": 2
-    },
-    {
-      "source": "Parkin is activated by PINK1-dependent phosphorylation of ubiquitin at Ser65",
-      "target": "001-353-214-346-040",
       "value": 2
     },
     {
@@ -1772,18 +1804,8 @@
       "value": 2
     },
     {
-      "source": "Substrate recognition by the cell surface palmitoyl transferase DHHC5.",
-      "target": "106-594-488-484-12X",
-      "value": 2
-    },
-    {
       "source": "Dysregulation of ubiquitin homeostasis and β-catenin signaling promote spinal muscular atrophy",
       "target": "026-244-336-682-442",
-      "value": 2
-    },
-    {
-      "source": "Structure-Guided Design and Optimization of Small Molecules Targeting the Protein–Protein Interaction between the von Hippel–Lindau (VHL) E3 Ubiquitin Ligase and the Hypoxia Inducible Factor (HIF) Alpha Subunit with in Vitro Nanomolar Affinities",
-      "target": "074-937-457-594-345",
       "value": 2
     },
     {
@@ -1837,11 +1859,6 @@
       "value": 2
     },
     {
-      "source": "Structure-activity relationship studies of pyrrolone antimalarial agents",
-      "target": "110-082-309-221-187",
-      "value": 2
-    },
-    {
       "source": "The Concise Guide to Pharmacology 2013/14.: The Concise Guide to Pharmacology 2013/14: G Protein-Coupled Receptors",
       "target": "128-382-566-327-896",
       "value": 2
@@ -1859,11 +1876,6 @@
     {
       "source": "Metabolism of inflammation limited by AMPK and pseudo-starvation",
       "target": "026-638-223-054-804",
-      "value": 2
-    },
-    {
-      "source": "Nrf2 impacts cellular bioenergetics by controlling substrate availability for mitochondrial respiration",
-      "target": "048-208-660-423-215",
       "value": 2
     },
     {
@@ -1892,11 +1904,6 @@
       "value": 2
     },
     {
-      "source": "Discovery and structure-activity relationships of pyrrolone antimalarials",
-      "target": "110-082-309-221-187",
-      "value": 2
-    },
-    {
       "source": "De Novo Design of Protein Kinase Inhibitors by in Silico Identification of Hinge Region-Binding Fragments",
       "target": "081-017-751-048-013",
       "value": 2
@@ -1909,11 +1916,6 @@
     {
       "source": "De Novo Design of Protein Kinase Inhibitors by in Silico Identification of Hinge Region-Binding Fragments",
       "target": "162-513-842-046-362",
-      "value": 2
-    },
-    {
-      "source": "Comprehensive characterization and optimization of anti-LRRK2 (leucine-rich repeat kinase 2) monoclonal antibodies",
-      "target": "188-803-921-043-695",
       "value": 2
     },
     {
@@ -1942,56 +1944,6 @@
       "value": 2
     },
     {
-      "source": "Structural determinants for ERK5 (MAPK7) and leucine rich repeat kinase 2 activities of benzo[e]pyrimido-[5,4-b]diazepine-6(11H)-ones",
-      "target": "051-324-518-696-462",
-      "value": 2
-    },
-    {
-      "source": "Structural determinants for ERK5 (MAPK7) and leucine rich repeat kinase 2 activities of benzo[e]pyrimido-[5,4-b]diazepine-6(11H)-ones",
-      "target": "161-487-188-181-03X",
-      "value": 2
-    },
-    {
-      "source": "Structural determinants for ERK5 (MAPK7) and leucine rich repeat kinase 2 activities of benzo[e]pyrimido-[5,4-b]diazepine-6(11H)-ones",
-      "target": "156-653-831-632-101",
-      "value": 2
-    },
-    {
-      "source": "Structural determinants for ERK5 (MAPK7) and leucine rich repeat kinase 2 activities of benzo[e]pyrimido-[5,4-b]diazepine-6(11H)-ones",
-      "target": "198-017-973-913-570",
-      "value": 2
-    },
-    {
-      "source": "Structural determinants for ERK5 (MAPK7) and leucine rich repeat kinase 2 activities of benzo[e]pyrimido-[5,4-b]diazepine-6(11H)-ones",
-      "target": "076-538-237-089-675",
-      "value": 2
-    },
-    {
-      "source": "Structural determinants for ERK5 (MAPK7) and leucine rich repeat kinase 2 activities of benzo[e]pyrimido-[5,4-b]diazepine-6(11H)-ones",
-      "target": "198-017-973-913-570",
-      "value": 2
-    },
-    {
-      "source": "Structural determinants for ERK5 (MAPK7) and leucine rich repeat kinase 2 activities of benzo[e]pyrimido-[5,4-b]diazepine-6(11H)-ones",
-      "target": "076-538-237-089-675",
-      "value": 2
-    },
-    {
-      "source": "Structural determinants for ERK5 (MAPK7) and leucine rich repeat kinase 2 activities of benzo[e]pyrimido-[5,4-b]diazepine-6(11H)-ones",
-      "target": "051-324-518-696-462",
-      "value": 2
-    },
-    {
-      "source": "Structural determinants for ERK5 (MAPK7) and leucine rich repeat kinase 2 activities of benzo[e]pyrimido-[5,4-b]diazepine-6(11H)-ones",
-      "target": "161-487-188-181-03X",
-      "value": 2
-    },
-    {
-      "source": "Structural determinants for ERK5 (MAPK7) and leucine rich repeat kinase 2 activities of benzo[e]pyrimido-[5,4-b]diazepine-6(11H)-ones",
-      "target": "156-653-831-632-101",
-      "value": 2
-    },
-    {
       "source": "A novel shogaol analog suppresses cancer cell invasion and inflammation, and displays cytoprotective effects through modulation of NF-κB and Nrf2-Keap1 signaling pathways",
       "target": "049-222-171-973-678",
       "value": 2
@@ -1999,36 +1951,6 @@
     {
       "source": "A novel shogaol analog suppresses cancer cell invasion and inflammation, and displays cytoprotective effects through modulation of NF-κB and Nrf2-Keap1 signaling pathways",
       "target": "074-598-665-914-143",
-      "value": 2
-    },
-    {
-      "source": "X-ray Crystal Structure of ERK5 (MAPK7) in Complex with a Specific Inhibitor",
-      "target": "161-487-188-181-03X",
-      "value": 2
-    },
-    {
-      "source": "X-ray Crystal Structure of ERK5 (MAPK7) in Complex with a Specific Inhibitor",
-      "target": "156-653-831-632-101",
-      "value": 2
-    },
-    {
-      "source": "X-ray Crystal Structure of ERK5 (MAPK7) in Complex with a Specific Inhibitor",
-      "target": "051-324-518-696-462",
-      "value": 2
-    },
-    {
-      "source": "The endosome-lysosome pathway and information generation in the immune system.",
-      "target": "190-195-697-065-907",
-      "value": 2
-    },
-    {
-      "source": "The endosome-lysosome pathway and information generation in the immune system.",
-      "target": "031-461-589-086-771",
-      "value": 2
-    },
-    {
-      "source": "GSK2578215A; a potent and highly selective 2-arylmethyloxy-5-substitutent-N-arylbenzamide LRRK2 kinase inhibitor.",
-      "target": "167-851-091-520-257",
       "value": 2
     },
     {
@@ -2058,11 +1980,6 @@
     },
     {
       "source": "PINK1 is activated by mitochondrial membrane potential depolarization and stimulates Parkin E3 ligase activity by phosphorylating Serine 65",
-      "target": "001-353-214-346-040",
-      "value": 2
-    },
-    {
-      "source": "PINK1 is activated by mitochondrial membrane potential depolarization and stimulates Parkin E3 ligase activity by phosphorylating Serine 65",
       "target": "150-822-190-827-131",
       "value": 2
     },
@@ -2071,11 +1988,7 @@
       "target": "051-919-508-851-10X",
       "value": 2
     },
-    {
-      "source": "Synthesis, Chemical Reactivity as Michael Acceptors, and Biological Potency of Monocyclic Cyanoenones, Novel and Highly Potent Anti-inflammatory and Cytoprotective Agents(1)",
-      "target": "036-789-224-520-054",
-      "value": 2
-    },
+
     {
       "source": "Synthesis, Chemical Reactivity as Michael Acceptors, and Biological Potency of Monocyclic Cyanoenones, Novel and Highly Potent Anti-inflammatory and Cytoprotective Agents(1)",
       "target": "036-251-116-198-69X",
@@ -2129,11 +2042,6 @@
     {
       "source": "Avirulence Protein 3a (AVR3a) from the Potato Pathogen Phytophthora infestans Forms Homodimers through Its Predicted Translocation Region and Does Not Specifically Bind Phospholipids",
       "target": "186-389-876-954-313",
-      "value": 2
-    },
-    {
-      "source": "NEDD8 overexpression results in neddylation of ubiquitin substrates by the ubiquitin pathway.",
-      "target": "168-483-508-794-377",
       "value": 2
     },
     {
@@ -2537,11 +2445,6 @@
       "value": 2
     },
     {
-      "source": "Changes in the ratio of free NEDD8 to ubiquitin triggers NEDDylation by ubiquitin enzymes",
-      "target": "168-483-508-794-377",
-      "value": 2
-    },
-    {
       "source": "Fragment-based discovery of 6-substituted isoquinolin-1-amine based ROCK-I inhibitors.",
       "target": "131-238-819-455-784",
       "value": 2
@@ -2552,26 +2455,6 @@
       "value": 2
     },
     {
-      "source": "Fragment-based discovery of 6-substituted isoquinolin-1-amine based ROCK-I inhibitors.",
-      "target": "040-389-070-176-191",
-      "value": 2
-    },
-    {
-      "source": "Fragment-based discovery of 6-substituted isoquinolin-1-amine based ROCK-I inhibitors.",
-      "target": "076-478-479-475-120",
-      "value": 2
-    },
-    {
-      "source": "A multifunctional protease inhibitor to regulate endolysosomal function.",
-      "target": "031-461-589-086-771",
-      "value": 2
-    },
-    {
-      "source": "A multifunctional protease inhibitor to regulate endolysosomal function.",
-      "target": "190-195-697-065-907",
-      "value": 2
-    },
-    {
       "source": "Design, Synthesis, and Structure−Activity Relationship Exploration of 1-Substituted 4-Aroyl-3-hydroxy-5-phenyl-1H-pyrrol-2(5H)-one Analogues as Inhibitors of the Annexin A2−S100A10 Protein Interaction",
       "target": "034-190-802-321-708",
       "value": 2
@@ -2579,16 +2462,6 @@
     {
       "source": "4-benzimidazolyl-3-phenylbutanoic acids as novel PIF-pocket-targeting allosteric inhibitors of protein kinase PKCζ.",
       "target": "130-316-719-983-242",
-      "value": 2
-    },
-    {
-      "source": "Optimisation of 6-substituted isoquinolin-1-amine based ROCK-I inhibitors",
-      "target": "076-478-479-475-120",
-      "value": 2
-    },
-    {
-      "source": "Optimisation of 6-substituted isoquinolin-1-amine based ROCK-I inhibitors",
-      "target": "040-389-070-176-191",
       "value": 2
     },
     {
@@ -2604,11 +2477,6 @@
     {
       "source": "Design, Synthesis and Biological Evaluation of Novel Inhibitors of Trypanosoma brucei Pteridine Reductase 1",
       "target": "107-556-164-321-147",
-      "value": 2
-    },
-    {
-      "source": "The inhibitory effect of phospholemman on the sodium pump requires its palmitoylation.",
-      "target": "106-594-488-484-12X",
       "value": 2
     },
     {
@@ -2653,37 +2521,12 @@
     },
     {
       "source": "Characterization of a selective inhibitor of the Parkinson's disease kinase LRRK2",
-      "target": "188-803-921-043-695",
-      "value": 2
-    },
-    {
-      "source": "Characterization of a selective inhibitor of the Parkinson's disease kinase LRRK2",
       "target": "041-699-843-843-567",
       "value": 2
     },
     {
       "source": "Characterization of a selective inhibitor of the Parkinson's disease kinase LRRK2",
       "target": "180-366-233-781-99X",
-      "value": 2
-    },
-    {
-      "source": "Characterization of a selective inhibitor of the Parkinson's disease kinase LRRK2",
-      "target": "156-653-831-632-101",
-      "value": 2
-    },
-    {
-      "source": "Characterization of a selective inhibitor of the Parkinson's disease kinase LRRK2",
-      "target": "051-324-518-696-462",
-      "value": 2
-    },
-    {
-      "source": "Characterization of a selective inhibitor of the Parkinson's disease kinase LRRK2",
-      "target": "161-487-188-181-03X",
-      "value": 2
-    },
-    {
-      "source": "Characterization of a selective inhibitor of the Parkinson's disease kinase LRRK2",
-      "target": "167-851-091-520-257",
       "value": 2
     },
     {
@@ -2764,11 +2607,6 @@
     {
       "source": "The cytoprotective role of the Keap1–Nrf2 pathway",
       "target": "040-826-560-477-838",
-      "value": 2
-    },
-    {
-      "source": "The cytoprotective role of the Keap1–Nrf2 pathway",
-      "target": "048-208-660-423-215",
       "value": 2
     },
     {
