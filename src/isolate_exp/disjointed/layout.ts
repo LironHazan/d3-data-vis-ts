@@ -13,4 +13,11 @@ export class Layout {
             .force('x', d3.forceX().strength(0.1))
             .force('y', d3.forceY().strength(0.1));
     }
+
+    static setSvgSelector(width: number, height: number): d3.Selection<any, any, any, any> {
+        return d3.select('.container')
+            .append('svg')
+            // @ts-ignore
+            .attr('viewBox', [- width / 2, - height / 2, width, height]);
+    }
 }

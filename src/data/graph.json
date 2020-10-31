@@ -457,6 +457,198 @@
       "citing_patents_count": 1
     },
     {
+      "id": "Foo1.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo2.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo3.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo4.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo11.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo12.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo13.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo14.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo21.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo22.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo23.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo24.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo111.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo112.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo113.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo114.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo31.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo32.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo33.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo34.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo311.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo312.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo313.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo314.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo231.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo322.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo323.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo324.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo311.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo312.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo313.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
+      "id": "Foo314.",
+      "group": "Cited Works",
+      "radius": 1,
+      "citing_patents_count": 1
+    },
+    {
       "id": "Optimisation of 6-substituted isoquinolin-1-amine based ROCK-I inhibitors",
       "group": "Cited Works",
       "radius": 4,
