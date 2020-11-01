@@ -1,65 +1,55 @@
 import * as d3 from 'd3';
-import {ExpModel, Link, Node, NodeType} from './exp-model';
+import {ExpModel, Link} from './exp-model';
 import {transformToGraphModel} from './utils';
 import {filterSecondLevel} from './data.util';
-import {Layout} from './layout';
-import {Drawer} from './drawer';
+import {Breakpoint, Drawer} from './drawer';
+import {auditTime} from 'rxjs/operators';
 
-function drawGraph(data: ExpModel<any, any>, width = 680, height = 680, count: number = 6 ) {
-
-    let transform = d3.zoomIdentity;
-
-    const svg = Layout.setSvgSelector(width, height);
-
-    const mainGroup = svg.append('g').attr('class', 'main-group');
-
-    const links = data.links.map((d: object) => Object.create(d));
-    const nodes = data.nodes.map((d: object) => Object.create(d));
-
-    const simulation = Layout.initSimulation(nodes, links);
-
-    let link = Drawer.drawLinks(mainGroup, links);
-
-    let node = Drawer.drawNodes(mainGroup, nodes, count);
-
-    simulation.on('tick', () => {
-        link
-            .attr('x1', (d: { source: { x: string | number | boolean; }; }) => d.source.x)
-            .attr('y1', (d: { source: { y: string | number | boolean; }; }) => d.source.y)
-            .attr('x2', (d: { target: { x: string | number | boolean; }; }) => d.target.x)
-            .attr('y2', (d: { target: { y: string | number | boolean; }; }) => d.target.y);
-
-        node
-            .attr('cx', (d: { x: string | number | boolean; }) => d.x)
-            .attr('cy', (d: { y: string | number | boolean; }) => d.y);
-    });
-
-    const zoom = d3.zoom()
-        .scaleExtent([1, 1.5])
-        .on('zoom', zoomed);
-
-    mainGroup.call(zoom).call(zoom.translateTo, 0, 0);
-
-    function zoomed() {
-        transform = d3.event.transform;
-        node.attr('transform', d3.event.transform);
-        link.attr('transform', d3.event.transform);
-        // if (transform.k > 1.19) {
-        //     console.log(transform.k);
-        //     svg.remove();
-        //     drawGraph(data, width, height, 3);
-        // }
-    }
-
-    return svg.node();
+function update(data: ExpModel<any, Link>, count = 0) {
+    const filtered = filterSecondLevel(data.nodes, data.links, count);
+    console.log(filtered.nodes.length);
+    return filtered ;
 }
 
 export function loadGraph() {
     d3.json('../data/graph.json').then(data => {
-        const t = transformToGraphModel(data);
-        const filtered = filterSecondLevel(t.nodes, t.links);
-        console.log(filtered.nodes.length);
-        drawGraph(filtered);
+        let state: Breakpoint = Breakpoint.sm;
+        const filtered = update(transformToGraphModel(data), 0);
+        const graph = Drawer.drawGraph(filtered);
+
+        Drawer.notifier$
+            .pipe(auditTime(300))
+            .subscribe((level) => {
+                if (level === Breakpoint.md && state !== Breakpoint.md) {
+                    state = Breakpoint.md;
+                    const filtered = update(transformToGraphModel(data), 10);
+                    Drawer.drawGraph(filtered, state);
+                }
+                if (level  === Breakpoint.sm && state !== Breakpoint.sm) {
+                    state = Breakpoint.sm;
+                    const filtered = update(transformToGraphModel(data), 0);
+                    Drawer.drawGraph(filtered, state);
+                }
+            });
+
+        //     Drawer.notifier$
+        //         .pipe(auditTime(300))
+        //         .subscribe((_) => {
+        //             const filtered = update(transformToGraphModel(data), 10);
+        //             console.log('re draw');
+        //             Drawer.drawGraph(filtered);
+        //
+        //             // if (_ === 'm') {
+        //             //     const filtered = update(transformToGraphModel(data), 10);
+        //             //     console.log('re draw');
+        //             //     Drawer.drawGraph(filtered);
+        //             // }
+        //             // if (_ === 's') {
+        //             //     const filtered = update(transformToGraphModel(data), 0);
+        //             //     console.log('re draw');
+        //             //     Drawer.drawGraph(filtered);
+        //             // }
+        // });
     });
 }
 
