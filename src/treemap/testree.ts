@@ -142,7 +142,7 @@ function update<T extends { total: any }>(res: T) {
 
 // Load data.
 export function loadTreemap() {
-    d3.json('./data/hidden/wanted.json').then(res => {
+    d3.json('./data/hidden/wanted.json').then((res: any) => {
         const { data } = res;
         update(data);
     });

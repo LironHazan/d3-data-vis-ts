@@ -12,7 +12,7 @@ function update(data: ExpModel<any, Link>, count = 0) {
 }
 
 export function loadGraph() {
-    d3.json('../data/graph.json').then(data => {
+    d3.json('../data/graph.json').then((data: any) => {
         let state: Breakpoint = Breakpoint.sm;
         const filtered = update(transformToGraphModel(data), 0);
         const graph = Drawer.drawGraph(filtered);
@@ -31,25 +31,6 @@ export function loadGraph() {
                     Drawer.drawGraph(filtered, state);
                 }
             });
-
-        //     Drawer.notifier$
-        //         .pipe(auditTime(300))
-        //         .subscribe((_) => {
-        //             const filtered = update(transformToGraphModel(data), 10);
-        //             console.log('re draw');
-        //             Drawer.drawGraph(filtered);
-        //
-        //             // if (_ === 'm') {
-        //             //     const filtered = update(transformToGraphModel(data), 10);
-        //             //     console.log('re draw');
-        //             //     Drawer.drawGraph(filtered);
-        //             // }
-        //             // if (_ === 's') {
-        //             //     const filtered = update(transformToGraphModel(data), 0);
-        //             //     console.log('re draw');
-        //             //     Drawer.drawGraph(filtered);
-        //             // }
-        // });
     });
 }
 

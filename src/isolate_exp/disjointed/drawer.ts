@@ -83,32 +83,13 @@ export class Drawer {
 
         const simulation = Layout.initSimulation(nodes, links);
 
-        let link = Drawer.drawLinks(mainGroup, links);
+        Drawer.updateGraph(simulation, mainGroup, links, nodes, count);
 
-        let node = Drawer.drawNodes(mainGroup, nodes, count);
-
-        let tile = mainGroup.selectAll('g');
-
-        simulation.on('tick', () => {
-            link
-                .attr('x1', (d: { source: { x: string | number | boolean; }; }) => d.source.x)
-                .attr('y1', (d: { source: { y: string | number | boolean; }; }) => d.source.y)
-                .attr('x2', (d: { target: { x: string | number | boolean; }; }) => d.target.x)
-                .attr('y2', (d: { target: { y: string | number | boolean; }; }) => d.target.y);
-
-            node
-                .attr('cx', (d: { x: string | number | boolean; }) => d.x)
-                .attr('cy', (d: { y: string | number | boolean; }) => d.y);
-        });
-
-        const zoom = d3.zoom().scaleExtent([0.8, 3]).on('zoom', zoomed);
+        const zoom = d3.zoom().scaleExtent([0.8, 3]).on('zoom', (event: any) => zoomed(event.transform));
 
         mainGroup.call(zoom).call(zoom.translateTo, 0, 0);
 
-        function zoomed() {
-            transform = d3.event.transform;
-            // node.attr('transform', d3.event.transform);
-            // link.attr('transform', d3.event.transform);
+        function zoomed(transform: any) {
 
             const tiles = tiler(transform);
             mainGroup.attr('transform', `scale(${tiles.scale})  translate(${tiles.translate.join(',')})`);
@@ -128,4 +109,21 @@ export class Drawer {
         return svg.node();
     }
 
+    static updateGraph(simulation: { on: (arg0: string, arg1: () => void) => void; }, mainGroup: any, links: Link[], nodes: Node[], count: number) {
+        let link = Drawer.drawLinks(mainGroup, links);
+        let node = Drawer.drawNodes(mainGroup, nodes, count);
+
+        simulation.on('tick', () => {
+            link
+                .attr('x1', (d: { source: { x: string | number | boolean; }; }) => d.source.x)
+                .attr('y1', (d: { source: { y: string | number | boolean; }; }) => d.source.y)
+                .attr('x2', (d: { target: { x: string | number | boolean; }; }) => d.target.x)
+                .attr('y2', (d: { target: { y: string | number | boolean; }; }) => d.target.y);
+
+            node
+                .attr('cx', (d: { x: string | number | boolean; }) => d.x)
+                .attr('cy', (d: { y: string | number | boolean; }) => d.y);
+        });
+
+    }
 }
