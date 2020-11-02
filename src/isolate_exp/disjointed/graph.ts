@@ -1,9 +1,9 @@
 import * as d3 from 'd3';
 import {ExpModel, Link} from './exp-model';
 import {transformToGraphModel} from './utils';
-import {filterSecondLevel} from './data.util';
 import {Breakpoint, Drawer} from './drawer';
 import {auditTime} from 'rxjs/operators';
+import {filterSecondLevel} from './data.util';
 
 function update(data: ExpModel<any, Link>, count = 0) {
     const filtered = filterSecondLevel(data.nodes, data.links, count);

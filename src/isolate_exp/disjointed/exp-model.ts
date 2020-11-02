@@ -6,13 +6,14 @@ export enum NodeType {
 }
 
 interface CommonNodeAttributes {
-    id?: string;
+    id: string;
+    index: number;
     size: number; // if there's no levelIntersection equals to outerCircleSize
     shape: 'circle';
     type: NodeType;
     links: Link[];
-    children: any[];
-    parent: Node | null;
+    childrenIds: string[];
+    parentId: string;
 }
 
 export interface FirstLevelNode {
