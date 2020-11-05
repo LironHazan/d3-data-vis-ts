@@ -5,6 +5,7 @@ import * as d3tile from 'd3-tile';
 import {Layout} from './layout';
 import { Subject } from 'rxjs';
 import {MapperFactory, MapType} from './mapper_factory';
+import {select} from 'd3';
 
 export enum Breakpoint {
     sm,
@@ -14,49 +15,109 @@ export enum Breakpoint {
 export class Drawer {
     public static notifier$: Subject<Breakpoint> = new Subject();
 
-    static drawNodes(mapper: MapperFactory, mainGroup: any, nodes: Node[], count: number): d3.Selection<any, any, any, any> {
+    static drawNodes(simulation: any, mapper: MapperFactory, mainGroup: any, nodes: Node[], firstOnly: boolean = true): Selection {
         const node = mainGroup.append('g')
-            // .attr('stroke', (d: any) => {
-            //     return '#000';
-            // })
+            .attr('class', 'node-g')
             .attr('stroke-width', 1)
             .selectAll('circle')
             .data(nodes)
-            .join('circle')
-           // .filter((d: any) => (d.type === NodeType.first_level))
-            .attr('r', (d: any) => {
-                if (d.type === NodeType.second_level) {
-                    return 10;
-                }
-                return 5;
-            })
-            .attr('stroke', (d: any) => {
-                if (d.type === NodeType.first_level) {
-                    return '#1A2B59';
-                }
-            })
-            .attr('stroke-width', (d: any) => {
-            if (d.type === NodeType.first_level) {
-                return 3;
-            }})
-            .attr('fill', (d: any) => {
-                if (d.type === NodeType.second_level) {
-                    return '#DBDFFF';
-                }
-                if (d.type === NodeType.first_level) {
-                    return '#3E95FE';
-                }
-                return 'transparent';
-            })
-            .on('wheel', (event: WheelEvent, d: Node) => {
-               // console.log(d);
-                // this.notifier$.next(d);
+            .join((enter: any) => {
+                    return enter.append('circle')
+                        .attr('id', (d: any) => d.id)
+                        .attr('r', (d: any) => {
+                            if (d.type === NodeType.second_level) {
+                                return 10;
+                            }
+                            return 5;
+                        })
+                        .attr('stroke', (d: any) => {
+                            if (d.type === NodeType.first_level) {
+                                return '#1A2B59';
+                            }
+                        })
+                        .attr('stroke-width', (d: any) => {
+                            if (d.type === NodeType.first_level) {
+                                return 3;
+                            }
+                        })
+                        .attr('fill', (d: any) => {
+                            if (d.type === NodeType.second_level) {
+                                return '#DBDFFF';
+                            }
+                            if (d.type === NodeType.first_level) {
+                                return '#3E95FE';
+                            }
+                            return 'transparent';
+                        })
+                        .on('wheel', (event: WheelEvent, d: any) => {
+                            // console.log(mapper.getNodeByIndex(d.index));
+                            // console.log(d.index);
+                            this.notifier$.next(d.id);
+                            return d;
+                        });
+            }
+            );
+
+        function hide(ids: string[]) {
+            // update nodes
+            const indexes = ids.map((id: string) => {
+                const index = mapper.getNodeById(id).index;
+                return index;
             });
+            nodes = nodes.filter((node) => !indexes.find((n) => n === node.index));
+
+            node.data(nodes, (d: any) => d.id)
+                .join((enter: any) => {
+                        return enter.append('circle')
+                            .attr('id', (d: any) => d.id)
+                            .attr('r', (d: any) => {
+                                if (d.type === NodeType.second_level) {
+                                    return 10;
+                                }
+                                return 5;
+                            })
+                            .attr('stroke', (d: any) => {
+                                if (d.type === NodeType.first_level) {
+                                    return '#1A2B59';
+                                }
+                            })
+                            .attr('stroke-width', (d: any) => {
+                                if (d.type === NodeType.first_level) {
+                                    return 3;
+                                }
+                            })
+                            .attr('fill', (d: any) => {
+                                if (d.type === NodeType.second_level) {
+                                    return '#DBDFFF';
+                                }
+                                if (d.type === NodeType.first_level) {
+                                    return '#3E95FE';
+                                }
+                                return 'transparent';
+                            })
+                            .on('wheel', (event: WheelEvent, d: any) => {
+                                // console.log(mapper.getNodeByIndex(d.index));
+                                // console.log(d.index);
+                                this.notifier$.next(d.id);
+                                return d;
+                            });
+                    }
+                );
+            simulation.alpha(0).restart();
+
+            // node.filter((d: any) => {
+            //     console.log(d);
+            //   //  return !ids.find(d.id);
+            // });
+        }
 
         node.on('click', function (event: MouseEvent, d: any) {
-          //  console.log(nodes);
-            console.log('map', mapper.getNodeByIndex(d.index));
-            console.log('d', d);
+            const node  = mapper.getNodeByIndex(d.index);
+            // const children = node.childrenIds.reduce(())
+            hide(node.childrenIds);
+            select(this).attr('stroke', 'hotpink');
+             console.log('map', this);
+            // console.log('d', d.index);
         });
 
         node.append('title').text((d: { id: string }) => d.id);
@@ -64,83 +125,80 @@ export class Drawer {
         return node;
     }
 
-    static drawLinks(mainGroup: any, links: Link[]): d3.Selection<any, any, any, any> {
+    static drawLinks(mainGroup: any, links: Link[], firstOnly = true): d3.Selection<any, any, any, any> {
         return  mainGroup.append('g')
             .attr('stroke', '#999')
-            .attr('stroke-opacity', 0.6)
+            .attr('stroke-opacity', 0.7)
             .selectAll('line')
             .data(links)
             .join('line');
         // .attr('stroke-width', (d: { value: number; }) => Math.sqrt(d.value));
     }
 
-    static drawGraph(data: ExpModel<any, any>, breakpoint: Breakpoint = Breakpoint.sm,  width = 680, height = 680, count: number = 6 ) {
-        let transform = d3.zoomIdentity;
-        const tiler = d3tile.tile().extent([[0, 0], [width, height]]);
+    static update(simulation: any, firstOnly = true, svg: any = null, mainGroup: any = null, data: ExpModel<any, any>, breakpoint: Breakpoint = Breakpoint.sm, width = 680, height = 680, count: number = 6) {
+        const tiler = d3tile.tile().extent([[0, 1], [width, height]]);
 
-        const svg = Layout.setSvgSelector(width, height);
-        const mainGroup = svg.append('g').attr('class', 'main-group');
+        svg = Layout.setSvgSelector(width, height);
+        mainGroup = svg.append('g').attr('class', 'main-group');
 
         const mapper =  MapperFactory.getInstance(MapType.id, data.nodes);
-        data.nodes.map((node: Node, i) =>  {
-            mapper.setNodeByIndex(i, node);
-        });
+        data.nodes.map((node: Node, i) => mapper.setNodeByIndex(i, node));
 
         const links = data.links.map((d: object) => Object.create(d));
         const nodes = data.nodes.map((d: object) => Object.create(d));
 
-        const simulation = Layout.initSimulation(nodes, links);
-        Drawer.updateGraph(mapper, simulation, mainGroup, links, nodes, count);
+       simulation =  Layout.initSimulation(nodes, links);
+       // Update the indexed nodes with coordinates info
+       simulation.nodes().forEach((node: Node, index: number) => {
+           mapper.setNodeByIndex(index, {...mapper.getNodeByIndex(index), ...node});
+           mapper.setNodeById(node.id, {...mapper.getNodeById(node.id), ...node});
+       });
 
-        const zoom = d3.zoom().scaleExtent([0.8, 3])
+        let link = Drawer.drawLinks(mainGroup, links, firstOnly);
+        let node: any = Drawer.drawNodes(simulation, mapper, mainGroup, nodes, firstOnly);
+
+        // node.on('click', (event: any, d: any) => {
+        //     simulation.alpha(1).restart();
+        // });
+
+        simulation && Drawer.updateSimulation(simulation, link, node, links, nodes, firstOnly);
+
+        const zoom = d3.zoom().scaleExtent([0.6, 1.2])
             .on('zoom', (event: any) => zoomed(event.transform));
         mainGroup.call(zoom).call(zoom.translateTo, 0, 0);
 
         function zoomed(transform: any) {
-
             const tiles = tiler(transform);
-            mainGroup.attr('transform', `scale(${tiles.scale})  translate(${tiles.translate.join(',')})`);
-           // console.log(tiles);
+            console.log(tiles);
+          mainGroup.attr('transform', `scale(${tiles.scale})  translate(${tiles.translate.join(',')})`);
 
-            if (tiles.scale >= 1.2 && breakpoint !== Breakpoint.md) {
-              //  console.log('remove');
-                svg.remove();
+            if (tiles.scale >= 1.1 && breakpoint !== Breakpoint.md) {
+                simulation.alpha(1).restart();
                 Drawer.notifier$.next(Breakpoint.md);
             }
             else if (tiles.scale <= 0.9 && breakpoint !== Breakpoint.sm) {
-                    svg.remove();
-                    Drawer.notifier$.next(Breakpoint.sm);
+                Drawer.notifier$.next(Breakpoint.sm);
             }
         }
 
-        return svg.node();
+        return { svg, mainGroup, simulation };
     }
 
-    static updateGraph(mapper: MapperFactory, simulation: { on: (arg0: string, arg1: () => void) => void; }, mainGroup: any, links: Link[], nodes: Node[], count: number) {
-        let link = Drawer.drawLinks(mainGroup, links);
-        let node = Drawer.drawNodes(mapper, mainGroup, nodes, count);
-
-        console.log(mapper);
-
+    static updateSimulation(simulation: any, link: any, node: any, links: Link[], nodes: Node[], firstOnly: boolean = true) {
         simulation.on('tick', () => {
             link
-                .attr('x1', (d: { source: { x: string | number | boolean; }; }) => {
-                    return d.source.x;
-                })
+                .attr('x1', (d: { source: { x: string | number | boolean; }; }) => d.source.x)
                 .attr('y1', (d: { source: { y: string | number | boolean; }; }) => d.source.y)
                 .attr('x2', (d: { target: { x: string | number | boolean; }; }) => d.target.x)
                 .attr('y2', (d: { target: { y: string | number | boolean; }; }) => d.target.y);
 
             node
-                .attr('cx', (d: {
-                    index: number;
-                    x: string | number | boolean; }) => {
-                    const node = {...mapper.getNodeByIndex(d.index), ...d};
-                    mapper.setNodeByIndex(d.index, node);
-                    return d.x;
-                })
+                .attr('cx', (d: { index: number; x: number; }) => d.x)
                 .attr('cy', (d: { y: string | number | boolean; }) => d.y);
         });
 
+        simulation.nodes(nodes);
+        simulation.force('link').links(links);
+        simulation.alphaTarget(-1).restart();
     }
 }
