@@ -6,7 +6,7 @@ export function transformToGraphModel<N  extends { group: string, id: string }, 
             node.size = 2;
             node.shape = 'circle';
             node.links = [];
-            node.children = [];
+            node.childrenIds = [];
             node.type = node.group === 'Cited Works' ? NodeType.first_level : NodeType.second_level;
             switch (node.type) {
                 case NodeType.first_level:

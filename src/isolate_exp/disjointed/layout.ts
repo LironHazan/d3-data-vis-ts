@@ -8,10 +8,12 @@ export class Layout {
 
     static initSimulation(nodes: SimulationNode[], links: SimulationLink[]): Simulation {
         return d3.forceSimulation(nodes)
-            .force('link', d3.forceLink(links).id((d: any) => d.id).distance(15))
-            .force('charge', d3.forceManyBody().strength(-30).distanceMax(900))
+            .force('link', d3.forceLink(links).id((d: any) => d.id).distance(24))
+            .force('charge', d3.forceManyBody().strength(-50).distanceMax(1000))
             .force('x', d3.forceX().strength(0.1))
             .force('y', d3.forceY().strength(0.1));
+            // @ts-ignore
+          //  .on('tick', ticked);
     }
 
     static setSvgSelector(width: number, height: number): d3.Selection<any, any, any, any> {
