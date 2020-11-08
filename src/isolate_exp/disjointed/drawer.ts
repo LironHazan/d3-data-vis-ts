@@ -157,9 +157,6 @@ export class Drawer {
         let link = Drawer.drawLinks(mainGroup, links, firstOnly);
         let node: any = Drawer.drawNodes(simulation, mapper, mainGroup, nodes, firstOnly);
 
-        // node.on('click', (event: any, d: any) => {
-        //     simulation.alpha(1).restart();
-        // });
 
         simulation && Drawer.updateSimulation(simulation, link, node, links, nodes, firstOnly);
 
