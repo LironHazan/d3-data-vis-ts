@@ -148,6 +148,7 @@ export class Drawer {
         const nodes = data.nodes.map((d: object) => Object.create(d));
 
        simulation =  Layout.initSimulation(nodes, links);
+       simulation.stop();
        // Update the indexed nodes with coordinates info
        simulation.nodes().forEach((node: Node, index: number) => {
            mapper.setNodeByIndex(index, {...mapper.getNodeByIndex(index), ...node});
