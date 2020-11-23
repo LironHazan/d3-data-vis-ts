@@ -12,11 +12,25 @@ function update(data: ExpModel<any, Link>, count = 0) {
     return filtered ;
 }
 
+const graph = {
+    'nodes': [
+        {
+            'id': 'foo',
+            'group': 'Cited Works',
+            'radius': 1,
+            'citing_patents_count': 1
+        }
+    ],
+    'links': [
+        {'source': 'foo', 'target': 'foo'},
+    ]
+};
+
 export function loadGraph() {
     d3.json('../data/graph.json').then((data: any) => {
         let state: Breakpoint = Breakpoint.sm;
         const filtered = update(transformToGraphModel(data), 10);
-        let {svg, mainGroup, simulation } = Drawer.update(null, true, null, null, filtered);
+        let {svg, mainGroup, simulation } = Drawer.update(null, true, null, null, graph);
 
         // const graph = DrawerUpdateFormat.update(null);
         // graph.update(filtered);

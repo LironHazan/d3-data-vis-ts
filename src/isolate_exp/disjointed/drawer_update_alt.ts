@@ -106,7 +106,7 @@ export class DrawerUpdateFormat {
                             if (d.type === NodeType.first_level) {
                                 return '#3E95FE';
                             }
-                            return 'transparent';
+                            return '#3E95FE';
                         })
                         .on('wheel', (event: WheelEvent, d: Node) => {}));
 

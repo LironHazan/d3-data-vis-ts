@@ -57,6 +57,7 @@ function tree(data = _data, width = 600, height = 600) {
         node
             .attr('cx', (d: { x: string | number | boolean; }) => d.x)
             .attr('cy', (d: { y: string | number | boolean; }) => d.y);
+
     });
 
     return svg.node();
